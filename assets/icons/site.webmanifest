@@ -1,7 +1,8 @@
 {
   "name": "Memory Vault",
   "short_name": "Memory Vault",
-  "start_url": ".",
+  "start_url": "/MemoryVault/",
+  "scope": "/MemoryVault/",
   "display": "standalone",
   "background_color": "#2dd4bf",
   "theme_color": "#0f172a",
