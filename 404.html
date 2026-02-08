@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,3 +16,22 @@
   <p>Redirecting to Memory Vault…</p>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Memory Vault</title>
+  <script>
+    // GitHub Pages SPA redirect
+    // Redirect all unknown paths back to the root index.html
+    var path = window.location.pathname;
+    var base = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+    window.location.replace(base + "/index.html");
+  </script>
+</head>
+<body>
+  <p>Redirecting to Memory Vault…</p>
+</body>
+</html>
+>>>>>>> 227ef05d1cd1596664221ea0f5a44babedfa806b

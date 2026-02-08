@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -280,3 +281,282 @@
   <script src="script.js"></script>
 </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="assets/icons/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+<link rel="manifest" href="assets/icons/site.webmanifest" />
+<meta name="theme-color" content="#0f172a" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memory Vault</title>
+  <meta name="theme-color" content="#111827" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">📖</div>
+        <div class="brand__text">
+          <div class="brand__name">Memory Vault</div>
+          <div class="brand__tag">Your personal life archive</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav__item is-active" data-view="add">
+          <span class="nav__icon">➕</span>
+          <span class="nav__label">Add Entry</span>
+        </button>
+        <button class="nav__item" data-view="browse">
+          <span class="nav__icon">🗂️</span>
+          <span class="nav__label">Browse</span>
+        </button>
+        <button class="nav__item" data-view="backup">
+          <span class="nav__icon">💾</span>
+          <span class="nav__label">Backup</span>
+        </button>
+        <button class="nav__item" data-view="about">
+          <span class="nav__icon">✨</span>
+          <span class="nav__label">About</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="stat">
+          <div class="stat__label">Entries</div>
+          <div class="stat__value" id="statEntries">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Last saved</div>
+          <div class="stat__value" id="statSaved">—</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main" aria-label="Content">
+      <header class="topbar">
+        <div class="topbar__left">
+          <h1 class="title" id="viewTitle">Add Entry</h1>
+          <p class="subtitle" id="viewSubtitle">Capture the moment — not the to-do list.</p>
+        </div>
+
+        <div class="topbar__right">
+          <button class="btn btn--ghost" id="btnQuickToday" title="Set date to today">Today</button>
+          <button class="btn" id="btnNewEntry" title="Clear form">New</button>
+        </div>
+      </header>
+
+      <!-- Views -->
+      <section class="view is-active" id="viewAdd" data-view="add">
+        <div class="card">
+          <h2 class="card__title">New Memory</h2>
+          <p class="card__hint">Future you is going to love reading this.</p>
+
+          <form id="entryForm" class="form">
+            <div class="grid grid--2">
+              <label class="field">
+                <span class="field__label">Category</span>
+                <select class="field__input" id="category" required>
+                  <option value="">Select…</option>
+                  <option>Life Highlights</option>
+                  <option>Football Memories</option>
+                  <option>Travel Moments</option>
+                  <option>Food Memories</option>
+                  <option>Personal Growth</option>
+                  <option>Funny / Random</option>
+                  <option>Wins Vault</option>
+                  <option>Gratitude Snapshots</option>
+                  <option>A Day in My Life</option>
+                  <option>Future Letters</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Title</span>
+                <input class="field__input" id="title" type="text" placeholder="e.g., First view of the Alps" required />
+              </label>
+
+              <label class="field">
+                <span class="field__label">Date</span>
+                <input class="field__input" id="date" type="date" />
+              </label>
+
+              <label class="field">
+                <span class="field__label">Location</span>
+                <input class="field__input" id="location" type="text" placeholder="e.g., Innsbruck, Austria" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Short story</span>
+              <textarea class="field__input field__textarea" id="story" rows="7"
+                placeholder="What happened? What did it feel like? What details do you want future-you to see?"></textarea>
+            </label>
+
+            <div class="grid grid--2">
+              <label class="field">
+                <span class="field__label">“How I felt” rating</span>
+                <div class="rating">
+                  <input id="felt" type="range" min="1" max="5" value="3" />
+                  <div class="rating__labels" aria-hidden="true">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                  </div>
+                  <div class="rating__text" id="feltText">3 / 5</div>
+                </div>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Tags (comma-separated)</span>
+                <input class="field__input" id="tags" type="text" placeholder="e.g., West Ham, away day, funny" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Photos (optional)</span>
+              <input class="field__input" id="photos" type="file" accept="image/*" multiple />
+              <span class="field__note">
+                Tip: photos are stored locally in your browser. Keep it to a few images per entry.
+              </span>
+              <div class="thumbs" id="thumbs"></div>
+            </label>
+
+            <div class="actions">
+              <button class="btn btn--primary" type="submit" id="btnSave">Save Memory</button>
+              <button class="btn btn--danger" type="button" id="btnDeleteDraft">Clear</button>
+            </div>
+
+            <div class="notice" id="formNotice" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="view" id="viewBrowse" data-view="browse">
+        <div class="card">
+          <div class="card__row">
+            <div>
+              <h2 class="card__title">Browse Memories</h2>
+              <p class="card__hint">Filter by category or search for a word you remember.</p>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <select class="field__input" id="filterCategory">
+              <option value="">All categories</option>
+              <option>Life Highlights</option>
+              <option>Football Memories</option>
+              <option>Travel Moments</option>
+              <option>Food Memories</option>
+              <option>Personal Growth</option>
+              <option>Funny / Random</option>
+              <option>Wins Vault</option>
+              <option>Gratitude Snapshots</option>
+              <option>A Day in My Life</option>
+              <option>Future Letters</option>
+            </select>
+
+            <input class="field__input" id="search" type="search" placeholder="Search title, story, location, tags…" />
+
+            <select class="field__input" id="sortBy">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="feltHigh">Highest felt rating</option>
+              <option value="feltLow">Lowest felt rating</option>
+            </select>
+          </div>
+
+          <div class="list" id="entriesList"></div>
+          <div class="empty" id="emptyState">
+            <div class="empty__icon">🕰️</div>
+            <div class="empty__title">No memories found</div>
+            <div class="empty__text">Try changing the filter, or add your first entry.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="viewBackup" data-view="backup">
+        <div class="card">
+          <h2 class="card__title">Backup</h2>
+          <p class="card__hint">Export your memories so they’re safe (and portable).</p>
+
+          <div class="actions">
+            <button class="btn btn--primary" id="btnExport">Export JSON</button>
+            <label class="btn btn--ghost" for="importFile">Import JSON</label>
+            <input id="importFile" type="file" accept="application/json" hidden />
+            <button class="btn btn--danger" id="btnWipe">Wipe Local Data</button>
+          </div>
+
+          <div class="notice" id="backupNotice" role="status" aria-live="polite"></div>
+
+          <div class="card card--muted">
+            <h3 class="card__title">Heads up</h3>
+            <p class="card__hint">
+              This app uses <strong>localStorage</strong>. If you clear browser data, you could lose entries unless you export.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="viewAbout" data-view="about">
+        <div class="card">
+          <h2 class="card__title">About Memory Vault</h2>
+          <p class="card__hint">
+            Not productivity. Not admin. This is your story — so future you can remember what life felt like.
+          </p>
+
+          <div class="aboutGrid">
+            <div class="pill">🌟 Life Highlights</div>
+            <div class="pill">⚽ Football Memories</div>
+            <div class="pill">✈️ Travel Moments</div>
+            <div class="pill">🍽 Food Memories</div>
+            <div class="pill">🧠 Personal Growth</div>
+            <div class="pill">😂 Funny / Random</div>
+            <div class="pill">🏆 Wins Vault</div>
+            <div class="pill">❤️ Gratitude</div>
+            <div class="pill">📅 Day in My Life</div>
+            <div class="pill">🔮 Future Letters</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__header">
+        <div>
+          <div class="modal__kicker" id="modalKicker">Category</div>
+          <h2 class="modal__title" id="modalTitle">Title</h2>
+          <div class="modal__meta" id="modalMeta">Date • Location • Felt</div>
+        </div>
+        <button class="iconBtn" id="modalClose" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="chips" id="modalTags"></div>
+        <p class="modal__story" id="modalStory"></p>
+        <div class="gallery" id="modalGallery"></div>
+      </div>
+
+      <div class="modal__footer">
+        <button class="btn btn--ghost" id="btnEdit">Edit</button>
+        <button class="btn btn--danger" id="btnDelete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> 227ef05d1cd1596664221ea0f5a44babedfa806b
