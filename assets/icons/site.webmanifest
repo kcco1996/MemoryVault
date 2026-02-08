@@ -1,13 +1,21 @@
 {
   "name": "Memory Vault",
   "short_name": "Memory Vault",
-  "start_url": "/MemoryVault/",
+  "start_url": "/MemoryVault/index.html",
   "scope": "/MemoryVault/",
   "display": "standalone",
   "background_color": "#2dd4bf",
   "theme_color": "#0f172a",
   "icons": [
-    { "src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "/MemoryVault/assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/MemoryVault/assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }
