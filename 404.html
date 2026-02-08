@@ -4,10 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Memory Vault</title>
-  <meta http-equiv="refresh" content="0; url=./index.html" />
+  <meta http-equiv="refresh" content="0; url=./" />
   <script>
-    // GitHub Pages SPA-style fallback
-    window.location.replace("./index.html");
+    // Redirect to the project root (works on GitHub Pages project sites)
+    const parts = location.pathname.split("/").filter(Boolean);
+
+    // parts[0] = username.github.io (not included)
+    // For project pages: /REPO/anything...
+    // Example pathname: /MemoryVault/some/page
+    const repo = parts[0] || "";
+    const base = "/" + repo + "/";
+
+    location.replace(base);
   </script>
 </head>
 <body>
